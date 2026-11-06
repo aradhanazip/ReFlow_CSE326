@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ReFlow admin</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Plus+Jakarta+Sans:wght@700&display=swap"
+    >
+    <link rel="stylesheet" href="app.css">
+  </head>
+  <body>
+    <div class="app">
+      <aside>
+        <h1>ReFlow</h1>
+        <nav id="nav" style="display: contents"></nav>
+        <button data-act="logout">Logout</button>
+      </aside>
+      <main>
+        <header>
+          <strong id="who"></strong>
+          <span id="bell"></span>
+        </header>
+        <section id="view" aria-live="polite"></section>
+      </main>
+    </div>
+    <div id="toast" role="status"></div>
+    <script src="./store.js"></script>
+    <script src="./admin.js"></script>
+  </body>
+</html>

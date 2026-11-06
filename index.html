@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ReFlow: Returns, Simplified.</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Plus+Jakarta+Sans:wght@700&display=swap"
+    >
+    <link rel="stylesheet" href="app.css">
+  </head>
+  <body class="login">
+    <div class="bn">
+      <img
+        class="banner"
+        src="reflow_hero_banner.png"
+        alt="ReFlow: Product Return and Refund Processing System. Request a return, track your refund, hassle-free."
+      >
+    </div>
+    <div class="wrap">
+      <form class="card glass cu" data-role="customer">
+        <h3><span class="ic">🛍️</span> Customer Portal</h3>
+        <p class="sub">Return an order and track your refund.</p>
+        <label for="ce">Email</label>
+        <input id="ce" type="email" required autocomplete="username">
+        <label for="cp">Password</label>
+        <input id="cp" type="password" required autocomplete="current-password">
+        <div class="err" role="alert"></div>
+        <button class="btn">Sign in as customer</button>
+        
+      </form>
+
+      <form class="card glass ad" data-role="admin">
+        <h3><span class="ic">🛡️</span> Administrator Portal</h3>
+        <p class="sub">Review returns, inspect products, process refunds.</p>
+        <label for="ae">Email</label>
+        <input id="ae" type="email" required autocomplete="username">
+        <label for="ap">Password</label>
+        <input id="ap" type="password" required autocomplete="current-password">
+        <div class="err" role="alert"></div>
+        <button class="btn">Sign in as admin</button>
+        
+      </form>
+    </div>
+    <p class="foot">
+      Demonstration login only. Role checks run in your browser and are not real security.
+      Refunds are simulated.
+    </p>
+    <script src="./store.js"></script>
+    <script>
+      document.querySelectorAll('form').forEach((form) =>
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          const [email, password] = form.querySelectorAll('input');
+
+          if (RF.login(form.dataset.role, email.value.trim(), password.value)) {
+            location.href = form.dataset.role + '.html';
+          } else {
+            form.querySelector('.err').textContent =
+              'Email or password is incorrect. Use the demo credentials shown below the form.';
+          }
+        }),
+      );
+    </script>
+  </body>
+</html>
